@@ -19,6 +19,9 @@ jobs:
           distribution: "microsoft"
           java-version: "21"
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Build application
         working-directory: server
         run: ./gradlew build
