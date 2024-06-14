@@ -1,5 +1,18 @@
 import { FC } from "react";
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
+import { Appbar } from "./components/appbar/Appbar";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "light",
+  },
+});
 
 export const App: FC = () => {
-  return <h1>MFE Testing Tool</h1>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Appbar />
+    </ThemeProvider>
+  );
 };
