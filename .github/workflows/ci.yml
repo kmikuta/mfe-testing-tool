@@ -8,12 +8,11 @@ on:
 
 jobs:
   build-server:
+    name: "Build server"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: "server"
 
       - uses: actions/setup-java@v4
         with:
@@ -24,21 +23,28 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build application
+        working-directory: server
         run: ./gradlew build
 
       - name: Run tests
+        working-directory: server
         run: ./gradlew test
 
   build-client:
+    name: "Build client"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: "client"
+
       - name: Install dependencies
+        working-directory: client
         run: npm ci
+
       - name: Build application
+        working-directory: client
         run: npm run build
+
       - name: Run tests
+        working-directory: client
         run: npm test
