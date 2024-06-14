@@ -48,3 +48,11 @@ jobs:
       - name: Run tests
         working-directory: client
         run: npm test
+
+      - name: Run lint
+        working-directory: client
+        run: npm run lint
+
+      - name: Run format check
+        working-directory: client
+        run: npm run format:check
