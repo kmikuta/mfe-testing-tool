@@ -1,0 +1,6 @@
+micronaut:
+  application:
+    name: mfe-testing-tool
+  server:
+    cors:
+      enabled: true
